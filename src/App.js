@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
@@ -6,6 +6,17 @@ import Todo from './components/Todo';
 import History from './components/History';
 
 function App() {
+const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos/')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json)
+        setData(json);
+      })
+  }, [])
+  
  return (
     <Router>
       <div>
@@ -33,6 +44,13 @@ function App() {
           <Route path="/history" element={<History />} />
         </Routes>
       </div>
+
+      {
+          data.map((item) => (
+            <div>{item.id}+{item.title}</div>
+          ))
+      }
+
     </Router>
  );
 }
