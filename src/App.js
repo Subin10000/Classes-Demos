@@ -1,56 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
-import Todo from './components/Todo';
-import History from './components/History';
+import Home from './components/home/Home';
+import './App.css';
+import Store from './components/store/Store';
+
 
 function App() {
-const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos/')
-      .then(response => response.json())
-      .then(json => {
-        console.log(json)
-        setData(json);
-      })
-  }, [])
-  
  return (
     <Router>
       <div>
-        <nav>
-          <ul>
+        <nav className='navbar'>
             <li>
-              <Link to="/">Home</Link>
+              <Link className='nav-items' to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link className='nav-items' to="/store">Store</Link>
             </li>
             <li>
-              <Link to="/todo">Todo</Link>
+              <Link className='nav-items' to="/todo">About</Link>
             </li>
-            <li>
-              <Link to="/history">History</Link>
-            </li>
-          </ul>
         </nav>
  
         <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/todo" element={<Todo />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/" element={<Home />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/history" element={<Home />} />
         </Routes>
       </div>
-
-      {
-          data.map((item) => (
-            <div>{item.id}+{item.title}</div>
-          ))
-      }
-
     </Router>
  );
 }

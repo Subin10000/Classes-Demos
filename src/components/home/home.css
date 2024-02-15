@@ -1,0 +1,31 @@
+.banner{
+    background: url("https://images.pexels.com/photos/762558/pexels-photo-762558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: baseline;
+    padding: 0 30px;
+}
+
+.banner div{
+    margin: 10px;
+    width: 40%;
+    padding: 10px 30px;
+    background-color: rgba(240, 248, 255, 0.135);
+}
+
+.banner h2{
+    color: rgb(255, 255, 255);
+    padding: 10px 30px;
+    background-color: rgba(240, 248, 255, 0.135);
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.banner div p {
+    color: white;
+}
+
+.banner h2 span{
+    color: red;
+}
